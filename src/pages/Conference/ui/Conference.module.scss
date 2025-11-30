@@ -1,0 +1,54 @@
+
+.mainBlock {
+  background-color: var(--foreground-color);
+  border-radius: 15px;
+  padding: 20px;
+  width: 600px;
+}
+
+.mainBlock h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.fields {
+  gap: 23px;
+}
+
+.fieldBlock {
+  gap: 4px;
+  font-weight: 600;
+}
+
+.fieldBlock h2 {
+  color: var(--blue-color-1);
+  font-size: 16px;
+}
+
+.fieldBlock p {
+  font-size: 14px;
+}
+
+.grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.connectButton {
+  margin-top: 30px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: var(--blue-color-1);
+}
+
+.connectButton svg {
+  width: 18px;
+  aspect-ratio: 1;
+  margin-left: 6px;
+}
+
+.loadingRotate {
+  width: 28px;
+  aspect-ratio: 1;
+  fill: var(--blue-color-1);
+}
