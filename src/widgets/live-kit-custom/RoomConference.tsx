@@ -13,7 +13,7 @@ import {
 } from "@livekit/components-react";
 import {RoomEvent, Track} from "livekit-client";
 import { isEqualTrackRef, isTrackReference, isWeb, log } from '@livekit/components-core';
-import {CustomControlBar} from "./CustomControlBar.tsx";
+import {CustomControlBar} from "./CustomControlBar/ui/CustomControlBar.tsx";
 
 function RoomConference(
 	{

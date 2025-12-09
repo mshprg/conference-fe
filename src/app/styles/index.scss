@@ -24,6 +24,19 @@ button {
   animation: rotate 0.6s linear infinite;
 }
 
+dialog {
+  all: unset;
+}
+
+.logo {
+  z-index: 1;
+  position: absolute;
+  width: 50px;
+  aspect-ratio: 1;
+  left: 30px;
+  top: 30px;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);

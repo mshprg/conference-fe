@@ -1,0 +1,31 @@
+
+.popup {
+  width: 520px;
+  min-height: 180px;
+  padding: var(--popup-padding);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: var(--popup-header-margin-bottom);
+  font-size: var(--popup-header-font-size);
+}
+
+.buttonClose svg {
+  width: var(--popup-header-icon-size);
+  aspect-ratio: 1;
+  fill: black;
+}
+
+.text {
+  font-size: var(--popup-font-size);
+}
+
+.buttonBottomClose {
+  font-size: var(--popup-font-size);
+  padding: 0 20px;
+  height: 38px;
+  background-color: var(--blue-color-1);
+  border-radius: 8px;
+}

@@ -9,11 +9,15 @@ import {formatDate} from "@/shared/lib/format-date.ts";
 import {Room} from "@/pages/Conference/widgets/Room/ui/Room.tsx";
 import {LoadingRotate} from "@/shared/ui/LoadingRotate";
 import {motion} from "framer-motion";
+import {useActions} from "@/shared/store";
+import {errorHandler} from "@/shared/lib/error-handler.ts";
+import type {AxiosError} from "axios";
 
 export const Conference = React.memo(() => {
 
 	const [searchParams] = useSearchParams();
 	const token: string = searchParams.get('act') || "";
+	const {openMessagePopup} = useActions();
 
 	const [conferenceData, setConferenceData] = useState<ValidateTokenResponse | null>(null);
 	const [error, setError] = useState<boolean>(false);
@@ -23,22 +27,28 @@ export const Conference = React.memo(() => {
 		setIsConnect(false);
 	}, []);
 
-	async function getData() {
-		try {
-			const response = await validateToken(token);
-
-			setConferenceData(response);
-		} catch (e) {
-			console.error(e);
-		}
-	}
-
 	useEffect(() => {
+		async function getData() {
+			try {
+				const response = await validateToken(token);
+
+				setConferenceData(response);
+			} catch (e: any) {
+				const error = e as AxiosError;
+				errorHandler({error, openMessagePopup})
+				setError(true);
+			}
+		}
+
 		getData();
 	}, []);
 
 	if (error) {
-		// TODO: Вывести ошибку
+		return (
+			<section className="w-full h-full flex items-center justify-center">
+				<p>Ошибка подключения</p>
+			</section>
+		)
 	}
 
 	if (!conferenceData) {

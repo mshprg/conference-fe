@@ -10,6 +10,7 @@ import {
 import { Track } from 'livekit-client';
 import React from 'react';
 import { supportsScreenSharing } from '@livekit/components-core';
+import styles from './CustomControlBar.module.scss';
 
 type CustomControlBarProps = ControlBarProps
 
@@ -109,13 +110,18 @@ export const CustomControlBar: React.FC<CustomControlBarProps> = (
 	);
 
 	return (
-		<div className='lk-control-bar' {...props}>
+		<div className={`lk-control-bar ${styles.CustomControlBar}`} {...props}>
+			<img
+				className={styles.logo}
+				src="/public/assets/METALOGY.jpg"
+				alt="metalogy-logo"
+			/>
 			{visibleControls.microphone && (
 				<div className="lk-button-group">
 					<TrackToggle
 						source={Track.Source.Microphone}
 						onChange={microphoneOnChange}
-						onDeviceError={(error) => onDeviceError?.({ source: Track.Source.Microphone, error })}
+						onDeviceError={(error) => onDeviceError?.({source: Track.Source.Microphone, error})}
 					>
 						{showText && "Микрофон"}
 					</TrackToggle>
@@ -153,24 +159,24 @@ export const CustomControlBar: React.FC<CustomControlBarProps> = (
 					source={Track.Source.ScreenShare}
 					captureOptions={{audio: true, selfBrowserSurface: 'include'}}
 					onChange={onScreenShareChange}
-					onDeviceError={(error) => onDeviceError?.({ source: Track.Source.Microphone, error })}
+					onDeviceError={(error) => onDeviceError?.({source: Track.Source.Microphone, error})}
 				>
 					{isScreenShareEnabled ? 'Остановить показ' : 'Показать экран'}
 				</TrackToggle>
 			)}
 			{visibleControls.chat && (
 				<ChatToggle>
-					{showIcon && <ChatIcon />}
+					{showIcon && <ChatIcon/>}
 					{showText && "Чат"}
 				</ChatToggle>
 			)}
 			{visibleControls.leave && (
 				<DisconnectButton>
-					{showIcon && <LeaveIcon />}
+					{showIcon && <LeaveIcon/>}
 					{showText && "Выйти"}
 				</DisconnectButton>
 			)}
-			<StartMediaButton />
+			<StartMediaButton/>
 		</div>
 	);
 };

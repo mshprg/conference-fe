@@ -1,0 +1,49 @@
+.displayOverlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: var(--overlay-color);
+  z-index: 1001;
+  backdrop-filter: blur(6px);
+}
+
+.popup {
+  border-radius: 15px;
+  background-color: var(--foreground-color);
+
+  --popup-padding: 20px;
+  --popup-header-margin-bottom: 26px;
+  --popup-header-font-size: 20px;
+  --popup-header-icon-size: 26px;
+  --popup-font-size: 15px;
+}
+
+@media (max-width: 1199px) {
+  .popup {
+    border-radius: 12px;
+
+    --popup-padding: 15px;
+    --popup-header-font-size: 17px;
+    --popup-header-icon-size: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .popup {
+    --popup-padding: 12px;
+    --popup-header-font-size: 16px;
+    --popup-header-icon-size: 22px;
+  }
+}
+
+@media (max-width: 575px) {
+  .popup {
+    --popup-padding: 1px;
+    --popup-header-margin-bottom: 15px;
+    --popup-header-icon-size: 24px;
+  }
+}
